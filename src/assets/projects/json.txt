@@ -1,0 +1,44 @@
+[
+  {
+    "name": "Story Reading Website",
+    "description": "Story reading and posting website with Admin dashboard using backend database",
+    "tags": ["react", "typescript"],
+    "link": "https://mahean.com/",
+    "picture": "image01.png"
+  },
+  {
+    "name": "Free Fire Auto Level Up",
+    "description": "A site for calculating cost and generating quote for level up service",
+    "tags": ["nextjs", "tailwind", "React"],
+    "link": "https://nextlevelff.netlify.app/",
+    "picture": "image02.png"
+  },
+  {
+    "name": "Free Fire Like Site",
+    "description": "A Free Fire Like site with Daily auto like feature",
+    "tags": ["fastapi", "react", "typescript"],
+    "link": "https://ff-like.netlify.app/",
+    "picture": "image03.png"
+  },
+  {
+    "name": "Personal Website",
+    "description": "Personal website built with React and Framer Motion, featuring smooth animations and responsive design.",
+    "tags": ["Framer Motion", "React", "Next.js"],
+    "link": "https://mroppy.is-great.net/",
+    "picture": "image04.png"
+  },
+  {
+    "name": "Client Marketing Website",
+    "description": "Live leaderboard system for tournaments",
+    "tags": ["supabase", "svelte", "websockets"],
+    "link": "https://setuofc7.com/",
+    "picture": "image05.png"
+  },
+  {
+    "name": "Signal Generator Web App",
+    "description": "Clean, minimalist trading dashboard that delivers time-synchronized Quotex signals across different market types",
+    "tags": ["Framer Motion", "React", "Next.js"],
+    "link": "https://quotex.setuofc7.com/",
+    "picture": "image06.png"
+  }
+]

@@ -1,0 +1,62 @@
+:root {
+  --bg-desktop: url('https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop');
+  /* Abstract futuristic dark blue */
+  --glass-bg: rgba(20, 20, 30, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.05);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+
+  --accent-color: #0078d4;
+  --accent-hover: #2b88d8;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+
+  --taskbar-height: 48px;
+  --window-radius: 12px;
+  --font-main: 'Segoe UI', 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  user-select: none;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-main);
+  overflow: hidden;
+  background-color: #000;
+  color: var(--text-primary);
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  position: fixed;
+  /* Changed to fixed to ensure it stays in place */
+  inset: 0;
+  overflow: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
