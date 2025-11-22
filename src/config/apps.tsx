@@ -8,7 +8,8 @@ import { Browser } from '../apps/Browser';
 import { VideoPlayer } from '../apps/VideoPlayer';
 import { Photos } from '../apps/Photos';
 import { Personalization } from '../apps/Personalization';
-import { User, Code, Gamepad2, FolderOpen, Globe, PlayCircle, Image as ImageIcon, Rocket, Briefcase, Settings } from 'lucide-react';
+import { Music } from '../apps/Music';
+import { User, Code, Gamepad2, FolderOpen, Globe, PlayCircle, Image as ImageIcon, Rocket, Briefcase, Settings, Music as MusicIcon } from 'lucide-react';
 import type { AppConfig } from '../types';
 
 export const INITIAL_APPS: Record<string, AppConfig> = {
@@ -95,5 +96,15 @@ export const INITIAL_APPS: Record<string, AppConfig> = {
         height: 600,
         showOnDesktop: false,
         showInStartMenu: false
+    },
+    'music': {
+        id: 'music',
+        title: 'Music',
+        icon: <MusicIcon size={24} color="#EC4899" />,
+        component: <Music />,
+        width: 900,
+        height: 600,
+        showOnDesktop: true,
+        showInStartMenu: true
     }
 };

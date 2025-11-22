@@ -21,8 +21,9 @@ const DesktopIcon = ({ app, launchApp, constraintsRef, size }: { app: AppConfig,
         }
     };
 
-    const iconSize = size === 'small' ? 32 : size === 'medium' ? 48 : 64;
-    const width = size === 'small' ? 70 : size === 'medium' ? 90 : 110;
+    const isMobile = window.innerWidth < 768;
+    const iconSize = isMobile ? 48 : (size === 'small' ? 32 : size === 'medium' ? 48 : 64);
+    const width = isMobile ? 90 : (size === 'small' ? 70 : size === 'medium' ? 90 : 110);
 
     return (
         <motion.div
@@ -150,7 +151,7 @@ export const Desktop = () => {
 
             {/* Windows Layer */}
             <AnimatePresence>
-                {windows.filter(w => !w.isMinimized).map(windowState => {
+                {windows.map(windowState => {
                     const app = apps[windowState.id];
                     if (!app) return null;
 

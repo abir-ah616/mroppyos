@@ -31,6 +31,8 @@ body {
   overflow: hidden;
   background-color: #000;
   color: var(--text-primary);
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
 #root {
@@ -59,4 +61,45 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.3);
+}
+
+/* Music Player Playing Indicator */
+.playing-indicator {
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+  height: 12px;
+}
+
+.playing-indicator span {
+  width: 3px;
+  background-color: #3B82F6;
+  animation: bounce 1s infinite ease-in-out;
+}
+
+.playing-indicator span:nth-child(1) {
+  height: 60%;
+  animation-delay: -0.2s;
+}
+
+.playing-indicator span:nth-child(2) {
+  height: 100%;
+  animation-delay: -0.4s;
+}
+
+.playing-indicator span:nth-child(3) {
+  height: 80%;
+  animation-delay: -0.6s;
+}
+
+@keyframes bounce {
+
+  0%,
+  100% {
+    height: 20%;
+  }
+
+  50% {
+    height: 100%;
+  }
 }

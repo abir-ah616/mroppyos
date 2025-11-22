@@ -138,8 +138,8 @@ export const Taskbar = () => {
             </div>
 
             {/* System Tray */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                <div style={{ display: 'flex', gap: '12px', color: 'white' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: window.innerWidth < 768 ? '8px' : '16px' }}>
+                <div style={{ display: 'flex', gap: window.innerWidth < 768 ? '8px' : '12px', color: 'white' }}>
                     <div
                         className="taskbar-trigger"
                         onClick={(e) => {
@@ -150,7 +150,7 @@ export const Taskbar = () => {
                         }}
                         style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
                     >
-                        <Wifi size={18} />
+                        <Wifi size={window.innerWidth < 768 ? 16 : 18} />
                     </div>
                     <div
                         className="taskbar-trigger"
@@ -162,7 +162,7 @@ export const Taskbar = () => {
                         }}
                         style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}
                     >
-                        {isMuted || volume === 0 ? <VolumeX size={18} /> : volume < 50 ? <Volume1 size={18} /> : <Volume2 size={18} />}
+                        {isMuted || volume === 0 ? <VolumeX size={window.innerWidth < 768 ? 16 : 18} /> : volume < 50 ? <Volume1 size={window.innerWidth < 768 ? 16 : 18} /> : <Volume2 size={window.innerWidth < 768 ? 16 : 18} />}
                     </div>
                 </div>
                 <div
@@ -171,7 +171,7 @@ export const Taskbar = () => {
                         e.stopPropagation();
                         setActivePopup(activePopup === 'calendar' ? null : 'calendar');
                     }}
-                    style={{ textAlign: 'right', color: 'white', fontSize: '12px', cursor: 'pointer' }}
+                    style={{ textAlign: 'right', color: 'white', fontSize: '12px', cursor: 'pointer', display: window.innerWidth < 400 ? 'none' : 'block' }}
                 >
                     <div style={{ fontWeight: 500 }}>{format(time, 'h:mm aa')}</div>
                     <div style={{ color: 'var(--text-secondary)' }}>{format(time, 'dd/MM/yyyy')}</div>

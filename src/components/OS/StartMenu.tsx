@@ -30,9 +30,11 @@ export const StartMenu = () => {
                         style={{
                             position: 'absolute',
                             bottom: '60px', // Positioned above taskbar
-                            left: '10px',   // Aligned to the left (Start button position)
-                            width: '600px',
-                            height: '700px',
+                            left: window.innerWidth < 768 ? '50%' : '10px',   // Aligned to the left (Start button position)
+                            transform: window.innerWidth < 768 ? 'translateX(-50%)' : 'none',
+                            width: window.innerWidth < 768 ? 'calc(100vw - 20px)' : '600px',
+                            height: window.innerWidth < 768 ? 'calc(100vh - 80px)' : '700px',
+                            maxHeight: '700px',
                             backgroundColor: 'rgba(24, 24, 30, 0.95)', // Darker, less glassy background
                             backdropFilter: 'blur(30px)',
                             borderRadius: '12px',

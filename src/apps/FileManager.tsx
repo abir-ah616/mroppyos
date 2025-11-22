@@ -245,6 +245,16 @@ export const FileManager = () => {
                             }}
                             onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.05)'}
                             onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                            onTouchEnd={(e) => {
+                                const now = Date.now();
+                                const lastTouch = parseInt(e.currentTarget.getAttribute('data-last-touch') || '0');
+                                if (now - lastTouch < 300) {
+                                    // Double tap detected
+                                    e.preventDefault();
+                                    handleItemClick(item);
+                                }
+                                e.currentTarget.setAttribute('data-last-touch', now.toString());
+                            }}
                         >
                             {getIcon(item)}
                             <span style={{

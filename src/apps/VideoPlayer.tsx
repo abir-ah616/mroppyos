@@ -167,7 +167,6 @@ export const VideoPlayer: React.FC<VideoPlayerProps> = ({ data }) => {
                     setIsPlaying(false);
                     setShowControls(true);
                 }}
-                onClick={togglePlay}
             />
 
             {/* Controls Overlay */}

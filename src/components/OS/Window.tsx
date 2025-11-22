@@ -59,11 +59,11 @@ export const Window: React.FC<WindowProps> = ({
                 position: 'absolute',
                 zIndex: windowState.zIndex,
                 backgroundColor: '#202020', // Solid dark background
-                border: '1px solid #333',
-                borderRadius: windowState.isMaximized ? 0 : '8px',
+                border: (windowState.isMaximized || window.innerWidth < 768) ? 'none' : '1px solid #333',
+                borderRadius: (windowState.isMaximized || window.innerWidth < 768) ? 0 : '8px',
                 boxShadow: '0 10px 30px rgba(0,0,0,0.5)',
                 overflow: 'hidden',
-                display: 'flex',
+                display: windowState.isMinimized ? 'none' : 'flex',
                 flexDirection: 'column',
                 top: windowState.isMaximized ? 0 : '10%',
                 left: windowState.isMaximized ? 0 : '10%',
@@ -98,6 +98,7 @@ export const Window: React.FC<WindowProps> = ({
                     borderBottom: '1px solid #333',
                     backgroundColor: '#252525',
                     cursor: windowState.isMaximized ? 'default' : 'grab',
+                    touchAction: 'none'
                 }}
             >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
