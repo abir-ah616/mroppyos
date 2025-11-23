@@ -35,19 +35,70 @@ import collectedImagesJson from '../assets/images/collected/images.json?raw';
 import collectedVideosJson from '../assets/videos/collected/videos.json?raw';
 
 // Parse collected assets
-const collectedImages = JSON.parse(collectedImagesJson).map((img: any, index: number) => ({
-    id: `collected-image-${index}`,
-    name: img.name,
-    type: 'image',
-    content: img.link
-}));
+// Parse collected assets
+const processCollectedAssets = (items: any[], type: 'video' | 'image', baseId: string): FileSystemItem[] => {
+    const root: FileSystemItem[] = [];
 
-const collectedVideos = JSON.parse(collectedVideosJson).map((vid: any, index: number) => ({
-    id: `collected-video-${index}`,
-    name: vid.name,
-    type: 'video',
-    content: vid.link
-}));
+    items.forEach((item, index) => {
+        // Handle both forward and backward slashes just in case, though requirement specifies backslash
+        const parts = item.name.split(/[\\/]/);
+        let currentLevel = root;
+
+        parts.forEach((part: string, partIndex: number) => {
+            const isFile = partIndex === parts.length - 1;
+
+            if (isFile) {
+                currentLevel.push({
+                    id: `${baseId}-${index}`,
+                    name: part,
+                    type: type,
+                    content: item.link
+                });
+            } else {
+                let folder = currentLevel.find(f => f.name === part && f.type === 'folder');
+                if (!folder) {
+                    folder = {
+                        id: `${baseId}-folder-${part}-${index}`,
+                        name: part,
+                        type: 'folder',
+                        children: []
+                    };
+                    currentLevel.push(folder);
+                }
+                currentLevel = folder.children!;
+            }
+        });
+    });
+
+    // Recursive sort
+    const sortItems = (items: FileSystemItem[]) => {
+        items.sort((a, b) => {
+            if (a.type === 'folder' && b.type !== 'folder') return -1;
+            if (a.type !== 'folder' && b.type === 'folder') return 1;
+            return a.name.localeCompare(b.name);
+        });
+        items.forEach(item => {
+            if (item.children) sortItems(item.children);
+        });
+    };
+
+    sortItems(root);
+    return root;
+};
+
+let collectedImages: FileSystemItem[] = [];
+try {
+    collectedImages = processCollectedAssets(JSON.parse(collectedImagesJson), 'image', 'collected-image');
+} catch (e) {
+    console.error("Failed to parse collected images:", e);
+}
+
+let collectedVideos: FileSystemItem[] = [];
+try {
+    collectedVideos = processCollectedAssets(JSON.parse(collectedVideosJson), 'video', 'collected-video');
+} catch (e) {
+    console.error("Failed to parse collected videos:", e);
+}
 
 const initialFileSystem: FileSystemItem[] = [
     {
